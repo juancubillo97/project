@@ -1,14 +1,17 @@
+import { User } from './../../entities/user.entity';
 import { Injectable } from "@nestjs/common";
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from "@nestjs/typeorm";
 import { ConfigService } from "@nestjs/config";
+
 @Injectable()
 export class TypeOrmConfigService implements TypeOrmOptionsFactory {
+ 
   constructor(private readonly config: ConfigService) {}
+ 
   createTypeOrmOptions(): TypeOrmModuleOptions {
     return {
       ...this.getOrmConfig(),
-      entities: [
-      ],
+      entities: [User],
     };
   }
   getOrmConfig(): any {
