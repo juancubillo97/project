@@ -3,6 +3,7 @@ import { CommonModule } from './common/common.module';
 import { UserModule } from './modules/user/user.module';
 import { TypeOrmConfigService } from './common/providers/ormconfig.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { TouristModule } from './modules/tourist-places/tourist.module';
 
 @Module({
   imports: [
@@ -12,6 +13,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       imports: [CommonModule],
       useExisting: TypeOrmConfigService,
     }),
+    
+    TouristModule,
   ],
 
 })

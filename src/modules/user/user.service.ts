@@ -8,15 +8,31 @@ export class UserService {
     constructor(@InjectRepository(User) private usersRepository: Repository<User>) { }
 
     async  findAll(): Promise<User[]> {
-        return await this.usersRepository.find();
+        try {
+            return await this.usersRepository.find();
+        } catch (error) {
+         console.log(error);
+            
+        }
+        
     }
 
     async findOne(id: number): Promise<User> {
-        return await this.usersRepository.findOne(id);
+        try {
+            return await this.usersRepository.findOne(id); 
+        } catch (error) {
+            console.log(error);
+        }
+        
     }
 
     async remove(id: number): Promise<void> {
-        await this.usersRepository.delete(id);
+        try {
+            await this.usersRepository.delete(id);
+        } catch (error) {
+            console.log(error);
+        }
+        
     }
 }
 
