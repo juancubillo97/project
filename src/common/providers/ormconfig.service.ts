@@ -1,7 +1,11 @@
-import { User } from './../../entities/user.entity';
+import { Municipality } from '../../entities/municipality';
+import { Departament } from '../../entities/department';
+import { User } from '../../entities/user.entity';
 import { Injectable } from "@nestjs/common";
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from "@nestjs/typeorm";
 import { ConfigService } from "@nestjs/config";
+import { Tourist } from '../../entities/tourist.entity';
+import { Rol } from '../../entities/role.entitys';
 
 @Injectable()
 export class TypeOrmConfigService implements TypeOrmOptionsFactory {
@@ -11,7 +15,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
   createTypeOrmOptions(): TypeOrmModuleOptions {
     return {
       ...this.getOrmConfig(),
-      entities: [User],
+      entities: [User,Tourist,Departament,Municipality,Rol],
     };
   }
   getOrmConfig(): any {
